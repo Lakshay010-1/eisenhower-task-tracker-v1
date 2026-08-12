@@ -1,6 +1,6 @@
 # Eisenhower Task Tracker V1
 
-A task management application based on the **Eisenhower Matrix**, built with Node.js, HTML, CSS, and JavaScript.
+A task management application based on the **Eisenhower Matrix**, built with Node.js, HTML, CSS, EJS and JavaScript.
 
 ## Features
 
@@ -23,6 +23,7 @@ A task management application based on the **Eisenhower Matrix**, built with Nod
 - Node.js
 - HTML5
 - CSS3
+- EJS
 - JavaScript
 
 ## Run Locally
