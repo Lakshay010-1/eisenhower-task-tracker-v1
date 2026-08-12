@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eisenhower Task Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="images/task-icon.svg">
+</head>
+
+<body>
+    <div style="display: flex; min-height: 100vh;">
+        <main style="flex: 1;">
+
+            <header>
+                <img src="/images/task-logo.svg" alt="Profile" class="profile-pic" title="Profile Logo">
+                <h3>Eisenhower Task Tracker</h3>
+                <div>
+                    <button class="layout-toggle" onclick="toggleLayout()">
+                        <img src="/images/grid-2.svg" id="grid-layout" alt="grid-layout">
+                    </button>
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <img src="/images/moon.svg" id="theme-mode" alt="theme-mode" value="light">
+                    </button>
+                </div>
+            </header>
+
+            <div id="body">
+
+                <aside id="sidebar">
+                    <h2>Mission Spaces</h2>
+                    <form action="/space" method="post" id="cur-space">
+                        <input type="text" id="newListName" placeholder="Add New Space..." name="space" required>
+                        <button id="newListBtn">+</button>
+                    </form>
+                    <ul id="listContainer">
+                        <% for (let space of spaces) { %>
+                            <li class="spaces <%= (space === currentSpace) ? 'currentSpace' : '' %>"
+                                data-space="<%= space %>">
+                                <%= space %>
+                            </li>
+                            <% } %>
+
+                    </ul>
+                </aside>
+
+                <div id="task-container">
+
+                    <form id="addTask" class="controls">
+                        <input id="taskText" type="text" placeholder="Add New task..." name="title" required />
+                        <input id="dueDate" type="datetime-local" name="dueDate" required />
+                        <select id="taskQuadrant" name="priority">
+                            <option value="ui">Urgent & Important</option>
+                            <option value="nui">Not Urgent & Important</option>
+                            <option value="uni">Urgent & Not Important</option>
+                            <option value="nuni">Not Urgent & Not Important</option>
+                        </select>
+                        <button type="submit">Add Task</button>
+                    </form>
+
+                    <div class="grid">
+                        <div class="quadrant ui">
+                            <h3>Urgent & Important</h3>
+                            <div id="ui">
+                                <% for(let i=0;i<tasks.length;i++){ %>
+                                    <% if(tasks[i].priority=="ui" ){ %>
+                                        <div class="task">
+                                            <span>
+                                                <strong>
+                                                    <%= tasks[i].title %>
+                                                </strong>
+                                                <small>
+                                                    <%= tasks[i].dueDate %>
+                                                </small>
+                                            </span>
+                                            <button class="edit" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/edit.svg" alt="edit logo"></button>
+                                            <button class="delete" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/delete.svg" alt="delete logo"></button>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+                        </div>
+                        <div class="quadrant nui">
+                            <h3>Not Urgent & Important</h3>
+                            <div id="nui">
+                                <% for(let i=0;i<tasks.length;i++){ %>
+                                    <% if(tasks[i].priority=="nui" ){ %>
+                                        <div class="task">
+                                            <span>
+                                                <strong>
+                                                    <%= tasks[i].title %>
+                                                </strong>
+                                                <small>
+                                                    <%= tasks[i].dueDate %>
+                                                </small>
+                                            </span>
+                                            <button class="edit" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/edit.svg" alt="edit logo"></button>
+                                            <button class="delete" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/delete.svg" alt="delete logo"></button>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+                        </div>
+                        <div class="quadrant uni">
+                            <h3>Urgent & Not Important</h3>
+                            <div id="uni">
+                                <% for(let i=0;i<tasks.length;i++){ %>
+                                    <% if(tasks[i].priority=="uni" ){ %>
+                                        <div class="task">
+                                            <span>
+                                                <strong>
+                                                    <%= tasks[i].title %>
+                                                </strong>
+                                                <small>
+                                                    <%= tasks[i].dueDate %>
+                                                </small>
+                                            </span>
+                                            <button class="edit" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/edit.svg" alt="edit logo"></button>
+                                            <button class="delete" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/delete.svg" alt="delete logo"></button>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+                        </div>
+                        <div class="quadrant nuni">
+                            <h3>Not Urgent & Not Important</h3>
+                            <div id="nuni">
+                                <% for(let i=0;i<tasks.length;i++){ %>
+                                    <% if(tasks[i].priority=="nuni" ){ %>
+                                        <div class="task">
+                                            <span>
+                                                <strong>
+                                                    <%= tasks[i].title %>
+                                                </strong>
+                                                <small>
+                                                    <%= tasks[i].dueDate %>
+                                                </small>
+                                            </span>
+                                            <button class="edit" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/edit.svg" alt="edit logo"></button>
+                                            <button class="delete" id="<%= tasks[i].id %>"><img class="mod-img"
+                                                    src="/images/delete.svg" alt="delete logo"></button>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <%- include("partials/footer.ejs") %>
+
+        <script src="/logic.js"></script>
+</body>
+
+</html>

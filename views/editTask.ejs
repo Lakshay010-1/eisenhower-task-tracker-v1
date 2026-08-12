@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eisenhower Task Tracker v1</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/images/edit-task.svg">
+</head>
+
+<body>
+    <div style="display: flex; min-height: 100vh;">
+        <main style="flex: 1;">
+
+            <header>
+                <img src="/images/task-logo.svg" alt="Profile" class="profile-pic" title="Profile Logo">
+                <h3>Eisenhower Task Tracker</h3>
+                <div>
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <img src="/images/moon.svg" id="theme-mode" alt="theme-mode" value="light">
+                    </button>
+                </div>
+            </header>
+
+            <div id="body">
+                <div id="editTask">
+                    <form id="modifyTask" action="/tasks/patch" method="post">
+                        <div>
+                            <input type="number" name="id" style="display: none;" value="<%= task.id %>" readonly>
+                        </div>
+                        <div>
+                            <label for="text">Task :</label>
+                            <textarea name="text"> <%= task.title %> </textarea>
+                        </div>
+                        <div>
+                            <label for="duedate">Due Date :</label>
+                            <input type="datetime-local" id="task-dueDate" name="duedate" value="<%= task.dueDate %>">
+                        </div>
+                        <div>
+                            <label for="priority">Priority :</label>
+                            <select name="priority">
+                                <option value="ui" <%=(task.priority==="ui" )? "selected" :"" %> >Urgent & Important
+                                </option>
+                                <option value="nui" <%=(task.priority==="nui" )? "selected" :"" %> >Not Urgent &
+                                    Important</option>
+                                <option value="uni" <%=(task.priority==="uni" )? "selected" :"" %> >Urgent & Not
+                                    Important</option>
+                                <option value="nuni" <%=(task.priority==="nuni" )? "selected" :"" %> >Not Urgent & Not
+                                    Important</option>
+                            </select>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <%- include("partials/footer.ejs") %>
+
+        <script src="/logic.js"></script>
+
+</body>
+
+</html>

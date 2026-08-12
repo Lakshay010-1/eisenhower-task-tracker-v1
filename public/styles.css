@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+:root {
+    --bg: #f4f4f4;
+    --text: #222;
+    --card: #ffffff;
+    --accent: #121212;
+    --button: #4caf50;
+    --task-bg: #e0e0e0;
+    --bg2: #c5c5c5;
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --card: #1e1e1e;
+    --accent: #f4f4f4;
+    --button: #4caf50;
+    --task-bg: #333;
+    --bg2: #000000;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    word-break: break-all;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background: var(--bg);
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+}
+
+body.dark header {
+    border-bottom: 1px solid #363636;
+
+}
+
+header>h3 {
+    text-align: center;
+    align-self: center;
+    margin: 0;
+    width: 100%;
+}
+
+header>div {
+    align-self: flex-start;
+    margin-left: auto;
+    display: flex;
+    gap: 0.1rem;
+    justify-content: center;
+    align-content: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+aside>form {
+    display: flex;
+    flex-direction: row;
+}
+
+option[value="ui"] {
+    background-color: rgba(229, 57, 53, 0.3);
+}
+
+option[value="nui"] {
+    background-color: rgba(253, 216, 53, 0.3);
+}
+
+option[value="uni"] {
+    background-color: rgba(30, 136, 229, 0.3);
+}
+
+option[value="nuni"] {
+    background-color: rgba(67, 160, 71, 0.3);
+}
+
+footer {
+    text-align: center;
+    margin: 0;
+    background: var(--task-bg);
+    padding: 1.5rem 0;
+}
+
+footer>h3 {
+    margin: 0;
+}
+
+footer a:link {
+    color: #e54935;
+    text-decoration: none;
+}
+
+footer a:visited {
+    color: #1e88e5;
+}
+
+footer a:hover {
+    color: #43a047;
+}
+
+footer a:active {
+    color: #b19621;
+}
+
+
+.theme-toggle {
+    right: 1rem;
+    top: 1rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.controls {
+    background: var(--card);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.controls input,
+.controls select,
+.controls button,
+.filters select,
+.filters option,
+#cur-space input,
+#modifyTask input,
+#modifyTask select,
+#modifyTask option {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.controls button,
+#cur-space button,
+#modifyTask button {
+    background: var(--button);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.filters {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    height: 100%;
+}
+
+.quadrant {
+    background: var(--card);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    min-height: 200px;
+}
+
+.quadrant h3 {
+    margin-top: 0;
+}
+
+.task {
+    background: var(--bg);
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    font-family: "Inconsolata";
+    font-size: 1.1rem;
+}
+
+.task span {
+    flex: 1;
+}
+
+.task small {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.task button {
+    margin-left: 0.5rem;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.edit {
+    background: #007bff;
+}
+
+.delete {
+    background: #f44336;
+}
+
+/* Quadrant color borders */
+.ui {
+    border-color: #e53935;
+    background-color: rgba(229, 57, 53, 0.05);
+}
+
+.nui {
+    border-color: #fdd835;
+    background-color: rgba(253, 216, 53, 0.05);
+}
+
+.uni {
+    border-color: #1e88e5;
+    background-color: rgba(30, 136, 229, 0.05);
+}
+
+.nuni {
+    border-color: #43a047;
+    background-color: rgba(67, 160, 71, 0.05);
+}
+
+body.dark .ui {
+    background-color: rgba(229, 57, 53, 0.2);
+}
+
+body.dark .nui {
+    background-color: rgba(253, 216, 53, 0.2);
+}
+
+body.dark .uni {
+    background-color: rgba(30, 136, 229, 0.2);
+}
+
+body.dark .nuni {
+    background-color: rgba(67, 160, 71, 0.2);
+}
+
+.mod-img {
+    height: 20px;
+}
+
+.profile-pic {
+    height: 2rem;
+    align-self: center;
+    object-fit: cover;
+}
+
+.layout-toggle {
+    padding: 0.4rem 0.8rem;
+    background-color: #89bdeb;
+    border-radius: 0.25rem;
+}
+
+.list-icon {
+    margin-right: 0.5rem;
+}
+
+.spaces {
+    padding: 0.5rem;
+    cursor: pointer;
+    color: inherit;
+
+
+}
+
+.currentSpace {
+    background-color: var(--accent);
+    color: var(--card);
+}
+
+
+#body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+#task-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#theme-mode {
+    height: 20px;
+}
+
+#grid-layout {
+    height: 20px;
+}
+
+#sidebar {
+    background: var(--card);
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+
+body.dark #sidebar {
+    border-right: 1px solid #363636;
+}
+
+#sidebar>h2 {
+    margin: 0;
+    padding: 1.3365rem 0.3375rem;
+    background-color: var(--task-bg);
+}
+
+#sidebar>form {
+    background-color: var(--task-bg);
+    padding: 1rem 1rem 1.3365rem;
+}
+
+#listContainer {
+    list-style: none;
+    padding: 0;
+    height: 100%;
+}
+
+#newListName {
+    border-radius: 0;
+}
+
+#cur-space button {
+    font-size: xx-large;
+    border-radius: 0;
+}
+
+#editTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+#modifyTask {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    width: 70%;
+    border: solid 0.25rem var(--text);
+    background-color: var(--task-bg);
+    margin: 5rem 0;
+}
+
+#modifyTask div {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+#modifyTask label {
+    font-size: 1.5rem;
+}
+
+#modifyTask button {
+    height: 3rem;
+}
+
+#modifyTask textarea {
+    box-sizing: border-box;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: larger;
+    padding: 0.5rem;
+}
+
+#ui .task {
+    border: 2px solid rgb(229, 56, 53, 0.3);
+}
+
+#nui .task {
+    border: 2px solid rgb(253, 216, 53, 0.3);
+}
+
+#uni .task {
+    border: 2px solid rgb(30, 136, 229, 0.3);
+}
+
+#nuni .task {
+    border: 2px solid rgb(67, 160, 71, 0.3);
+}
